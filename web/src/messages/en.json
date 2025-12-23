@@ -1,0 +1,146 @@
+{
+  "app": {
+    "name": "Home Purchase Simulator",
+    "description": "Evaluate mortgage scenarios and investment strategies to make informed home-buying decisions."
+  },
+  "Sidebar": {
+    "title": "Scenario Builder",
+    "subtitle": "Real-time Dashboard",
+    "button": "Recalculate",
+    "property": {
+      "title": "Property",
+      "price": "Purchase Price",
+      "closingCosts": "Closing Costs",
+      "growth": "Growth / Year",
+      "optional": "(Optional)",
+      "maintenance": "Maintenance",
+      "perYear": "Per Year",
+      "taxes": "Taxes (IBI)"
+    },
+    "mortgage": {
+      "title": "Mortgage",
+      "amount": "Loan Amount",
+      "term": "Term",
+      "yearsShort": "Yrs",
+      "type": "Type",
+      "fixed": "Fixed",
+      "variable": "Variable",
+      "rate": "Interest Rate (TIN)",
+      "euribor": "Current Euribor",
+      "spread": "Avg Expected Rate",
+      "longTerm": "Long term"
+    },
+    "investing": {
+      "title": "Investing",
+      "nominalReturn": "Nominal Return",
+      "inflation": "Inflation",
+      "strategy": "Strategy",
+      "investUpfront": "Invest Upfront Capital",
+      "investUpfrontDescription": "If enabled, it is assumed that the upfront capital not used for the purchase is invested from the start."
+    },
+    "pledge": {
+      "title": "Pledge Loan",
+      "warning": "Advanced: Borrowing against your portfolio.",
+      "amount": "Pledge Amount",
+      "ltvLimit": "LTV Limit"
+    },
+    "profile": {
+      "title": "Profile",
+      "netIncome": "Monthly Salary",
+      "age": "Age (youngest)",
+      "otherDebtsMonthly": "Other Monthly Debts"
+    },
+    "safety": {
+      "title": "Safety Net",
+      "monthlyLimit": "Max Monthly Payment"
+    }
+  },
+  "MainContent": {
+    "title": "Mortgage Decision Calculator",
+    "description": "Evaluate mortgage scenarios and investment strategies to make informed home-buying decisions.",
+    "Hero": {
+      "monthlyCommitment": "Monthly Commitment",
+      "variable": "Variable",
+      "totalOutflow": "Total Outflow",
+      "stressTest": "Stress Test (Rate +2.5%)",
+      "monthShort": "mo",
+      "totalMonthlyPropertyExpenses": "Property Expenses (Taxes + Maintenance + Est. Insurance)",
+      "tooltip": {
+        "monthlyCommitment": "The monthly commitment includes mortgage payment, taxes, maintenance, and pledge loan cost (if applicable).",
+        "totalOutflow": "Total outflow is the sum of all monthly expenses related to the property and mortgage.",
+        "stressTest": "The stress test shows the impact on the monthly commitment if the interest rate were to increase by 2.5 percentage points."
+      }
+    },
+    "Safety": {
+      "title": "Safety Net",
+      "netIncome": "Net Income:",
+      "dti": "Debt-to-Income",
+      "runway": "Runway:",
+      "months": "months",
+      "buffer": "cash buffer",
+      "tooltip": "Runway indicates how many months you can cover your total outflows with your net income and available cash buffer."
+    },
+    "Pledge": {
+      "statusTitle": "Pledge Loan Status:",
+      "risk": "MARGIN CALL RISK",
+      "healthy": "Healthy",
+      "description": "Current LTV is {current}%. Maintenance limit is {limit}%.",
+      "warning": "You are borrowing more than your safety limit allows.",
+      "tooltip": "The pledge loan status is based on your portfolio's current LTV (Loan to Value) compared to the set maintenance limit."
+    },
+    "Chart": {
+      "title": "Net Worth Projection",
+      "netWorth": "Net Worth",
+      "components": "Components",
+      "propertyValue": "Property Value",
+      "homeEquity": "Home Equity",
+      "investment": "Investment",
+      "debts": "Debts",
+      "year": "Year",
+      "tooltip": "This chart shows the projected evolution of your net worth over time, considering property appreciation, mortgage payments, and investment growth.",
+      "tooltips": {
+        "netWorth": "Hover over the chart to see detailed values for each year",
+        "homeEquity": "Equity built through mortgage payments and property appreciation",
+        "investment": "Value of your invested capital growing at the selected rate",
+        "debts": "Total outstanding debt from mortgage and pledge loans"
+      }
+    },
+    "Costs": {
+      "title": "Cost Breakdown",
+      "fullTerm": "Full",
+      "interestPaid": "Total Interest Paid",
+      "interestDesc": "Cost of borrowing",
+      "cashOutlay": "Total Cash Outlay",
+      "outlayDesc": "Maintenance + Tax + Mortg.",
+      "tooltip": "This breakdown shows the total cost of the mortgage over the full term, including interest paid and cash outlays for maintenance and taxes."
+    },
+    "Strategy": {
+      "title": "Strategy Match",
+      "rateVsReturn": "Mortgage Rate vs. Returns",
+      "investSurplus": "Invest Surplus",
+      "payDebt": "Pay Debt",
+      "loan": "Loan",
+      "invest": "Invest",
+      "pledgeVsSell": "Pledge Cost vs. Sell Assets",
+      "leverage": "Leverage",
+      "pledgeCost": "Pledge Cost",
+      "taxOnSell": "Tax on Sell",
+      "tooltip": "This analysis compares the expected returns from investing your surplus versus the cost of the mortgage and pledge loan."
+    },
+    "Amortization": {
+      "title": "Mortgage Amortization",
+      "schedule": "Amortization Schedule",
+      "tooltip": "Visual breakdown of how your mortgage payments are split between principal and interest over time.",
+      "month": "Month",
+      "payment": "Payment",
+      "principal": "Principal",
+      "interest": "Interest",
+      "balance": "Remaining Balance",
+      "monthYearLabel": "{month}"
+    }
+  },
+  "Share": {
+    "label": "Share",
+    "copied": "Copied!"
+  }
+}

@@ -1,40 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Home Purchase Simulator
 
-## Getting Started
+[![CI](https://github.com/xfrr/home-purchase-simulator/actions/workflows/ci.yaml/badge.svg)](https://github.com/xfrr/home-purchase-simulator/actions/workflows/ci.yaml)
 
-First, run the development server:
+A web app that helps compare buying a home with cash vs mortgage vs mixed vs pledging investments, using simple inputs and showing clear outcomes over years.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<img style="border-radius: 8px;" src="./assets/snapshot.png" width="600px" height="300">
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Compare different home financing options: cash, mortgage, mixed, and pledging investments.
+- Input parameters for property, mortgage, investments, and other financial factors.
+- Visualize outcomes over time with charts and tables.
+- User-friendly interface for easy data entry and interpretation.
+- Export and share results.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Installation
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   git clone https://github.com/xfrr/home-purchase-simulator.git
+   cd home-purchase-simulator
+   ```
 
-## Learn More
+2. Install dependencies and start the development server:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   just all
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+3. Open your browser and navigate to `http://localhost:3001` (or the port specified in the terminal).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+- Use the sidebar to input your financial parameters.
+- View the main dashboard for projections and comparisons.
+- Adjust inputs as needed to see how different scenarios play out.
+- And... share with friends or advisors!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Contributions are welcome! Please fork the repository and create a pull request with your changes. For major changes, please open an issue first to discuss what you would like to change.
+
+## Acknowledgements  
+
+- Inspired by the need for better tools to make informed home-buying decisions.
+- Built with Next.js, React, and Tailwind CSS.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

@@ -1,0 +1,144 @@
+{
+  "app": {
+    "name": "Simulador de Compra de Vivienda",
+    "description": "Evalúa escenarios hipotecarios y estrategias de inversión para tomar decisiones informadas sobre la compra de vivienda."
+  },
+  "Sidebar": {
+    "title": "Parámetros",
+    "subtitle": "Ajusta los parámetros de simulación",
+    "button": "Recalcular",
+    "property": {
+      "title": "Propiedad",
+      "price": "Precio de Compra",
+      "closingCosts": "Gastos (Impuestos)",
+      "growth": "Plusvalía / Año",
+      "optional": "(Opcional)",
+      "maintenance": "Mantenimiento",
+      "perYear": "Al Año",
+      "taxes": "IBI / Año"
+    },
+    "mortgage": {
+      "title": "Hipoteca",
+      "amount": "Importe Préstamo",
+      "term": "Plazo",
+      "yearsShort": "Años",
+      "type": "Tipo",
+      "fixed": "Fijo",
+      "variable": "Variable",
+      "rate": "Interés (TIN)",
+      "euribor": "Euribor Actual",
+      "spread": "Media Esperada",
+      "longTerm": "Largo plazo"
+    },
+    "investing": {
+      "title": "Inversión",
+      "nominalReturn": "Retorno Nominal",
+      "inflation": "Inflación",
+      "strategy": "Estrategia",
+      "investUpfront": "Invertir Capital Inicial",
+      "investUpfrontDescription": "Si está activado, se asume que el capital inicial no utilizado para la compra se invierte desde el principio."
+    },
+    "pledge": {
+      "title": "Pignoración",
+      "warning": "Avanzado: Préstamo con garantía de cartera.",
+      "amount": "Cantidad Pignorada",
+      "ltvLimit": "Límite LTV"
+    },
+    "profile": {
+      "title": "Perfil",
+      "netIncome": "Ingresos Netos Mensuales",
+      "age": "Edad (titular más joven)",
+      "otherDebtsMonthly": "Otras Deudas Mensuales"
+    },
+    "safety": {
+      "title": "Seguridad",
+      "monthlyLimit": "Límite Cuota Hipoteca"
+    }
+  },
+  "MainContent": {
+    "Hero": {
+      "monthlyCommitment": "Cuota Hipoteca",
+      "variable": "Variable",
+      "totalOutflow": "Total Mensual",
+      "stressTest": "Test Estrés (Tipo +2.5%)",
+      "monthShort": "mes",
+      "totalMonthlyPropertyExpenses": "Gastos Mensuales (IBI + Mantenimiento + Seg. Est.)",
+      "tooltips": {
+        "monthlyCommitment": "La cuota hipotecaria incluye el pago de la hipoteca, impuestos, mantenimiento y coste de la pignoración (si aplica).",
+        "totalOutflow": "Suma de todos los gastos mensuales relacionados con la propiedad y la hipoteca.",
+        "stressTest": "El test de estrés muestra el impacto en la cuota mensual si el tipo de interés aumentara en 2.5 puntos porcentuales."
+      }
+    },
+    "Safety": {
+      "title": "Red de Seguridad",
+      "netIncome": "Ingresos Netos:",
+      "dti": "Ratio Endeudamiento",
+      "runway": "Autonomía:",
+      "months": "meses",
+      "buffer": "de colchón",
+      "tooltip": "La autonomía indica durante cuántos meses podrías cubrir tus gastos totales con tus ingresos netos y el colchón de efectivo disponible."
+    },
+    "Pledge": {
+      "statusTitle": "Estado Pignoración:",
+      "risk": "RIESGO MARGIN CALL",
+      "healthy": "Saludable",
+      "description": "LTV actual: {current}%. Límite: {limit}%.",
+      "warning": "Estás pidiendo prestado por encima de tu límite de seguridad.",
+      "tooltip": "El estado de la pignoración se basa en el LTV (Loan to Value) actual de tu cartera en comparación con el límite de mantenimiento establecido."
+    },
+    "Chart": {
+      "title": "Proyección Patrimonio",
+      "netWorth": "Patrimonio Neto",
+      "components": "Componentes",
+      "propertyValue": "Valor de la vivienda",
+      "homeEquity": "Patrimonio Inmobiliario",
+      "investment": "Inversión",
+      "debts": "Deudas",
+      "year": "Año",
+      "tooltip": "Esta gráfica muestra la evolución proyectada de tu patrimonio neto a lo largo del tiempo, considerando la apreciación de la propiedad, el pago de la hipoteca y el crecimiento de tus inversiones.",
+      "tooltips": {
+        "netWorth": "Pasa el ratón sobre el gráfico para ver valores detallados para cada año",
+        "homeEquity": "Patrimonio acumulado mediante pagos hipotecarios y apreciación de la propiedad",
+        "investment": "Valor de tu capital invertido creciendo a la tasa seleccionada",
+        "debts": "Deuda total pendiente de hipoteca y préstamos pignorados"
+      }
+    },
+    "Costs": {
+      "title": "Desglose de Costes",
+      "fullTerm": "Total",
+      "interestPaid": "Intereses Pagados",
+      "interestDesc": "Coste del préstamo",
+      "cashOutlay": "Desembolso Total",
+      "outlayDesc": "Mantenimiento + IBI + Hipoteca",
+      "tooltip": "Este desglose muestra el coste total de la hipoteca a lo largo del plazo completo, incluyendo los intereses pagados y los desembolsos en mantenimiento e impuestos."
+    },
+    "Strategy": {
+      "title": "Estrategia",
+      "rateVsReturn": "Hipoteca vs. Rentabilidad",
+      "investSurplus": "Invertir Excedente",
+      "payDebt": "Amortizar Deuda",
+      "loan": "Préstamo",
+      "invest": "Invertir",
+      "pledgeVsSell": "Coste Pignoración vs Venta",
+      "leverage": "Apalancamiento",
+      "pledgeCost": "Coste Pignoración",
+      "taxOnSell": "Impuestos Venta",
+      "tooltip": "Este análisis compara la rentabilidad esperada de invertir tu excedente frente al coste de la hipoteca y la pignoración."
+    },
+    "Amortization": {
+      "title": "Amortización Hipoteca",
+      "schedule": "Tabla de Amortización",
+      "tooltip": "Desglose visual de cómo tus pagos hipotecarios se distribuyen entre principal e intereses a lo largo del tiempo.",
+      "month": "Mes",
+      "payment": "Pago",
+      "principal": "Principal",
+      "interest": "Interés",
+      "balance": "Saldo Restante",
+      "monthYearLabel": "{month}"
+    }
+  },
+  "Share": {
+    "label": "Compartir",
+    "copied": "¡Copiado!"
+  }
+}
