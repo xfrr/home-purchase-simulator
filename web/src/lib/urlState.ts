@@ -1,50 +1,54 @@
 import { ProjectionData } from "./projection";
 
 /**
- * Serialize ProjectionData to a compressed URL query string
- * Uses short property names to minimize URL length
+ * Serialize ProjectionData to a base64-encoded URL query string
+ * Creates a much shorter and cleaner URL than traditional query parameters
  */
 export function encodeStateToQuery(data: ProjectionData): string {
-  const encoded = {
-    // Property
-    pp: data.property.price,
-    pcc: data.property.closingCosts,
-    pg: data.property.growth,
-    pm: data.property.maintenance,
-    pt: data.property.taxes,
-    // Mortgage
-    ma: data.mortgage.amount,
-    mte: data.mortgage.term,
-    mty: data.mortgage.type,
-    mfr: data.mortgage.fixedRate,
-    mvc: data.mortgage.varCurrent,
-    mve: data.mortgage.varExpected,
-    // Investing
-    ir: data.investing.return,
-    ii: data.investing.inflation,
-    iup: data.investing.investUpfront ? "1" : "0",
-    // Profile
-    pms: data.profile.netIncome,
-    pag: data.profile.age,
-    pod: data.profile.otherDebtsMonthly,
-    // Pledge
-    pla: data.pledge.amount,
-    plt: data.pledge.ltv,
-  };
+  // Create a compact array representation of the data
+  const compact = [
+    // Property [0-4]
+    data.property.price,
+    data.property.closingCosts,
+    data.property.growth,
+    data.property.maintenance,
+    data.property.taxes,
+    // Mortgage [5-10]
+    data.mortgage.amount,
+    data.mortgage.term,
+    data.mortgage.type === "fixed" ? 0 : 1,
+    data.mortgage.fixedRate,
+    data.mortgage.varCurrent,
+    data.mortgage.varExpected,
+    // Investing [11-13]
+    data.investing.return,
+    data.investing.inflation,
+    data.investing.investUpfront ? 1 : 0,
+    // Profile [14-16]
+    data.profile.netIncome,
+    data.profile.age,
+    data.profile.otherDebtsMonthly,
+    // Pledge [17-18]
+    data.pledge.amount,
+    data.pledge.ltv,
+  ];
 
-  const params = new URLSearchParams();
-  Object.entries(encoded).forEach(([key, value]) => {
-    if (value !== null && value !== undefined) {
-      params.set(key, String(value));
-    }
-  });
+  // Convert to JSON and then to base64
+  const json = JSON.stringify(compact);
+  const base64 = btoa(json);
 
-  return params.toString();
+  // URL-safe base64: replace +/= with -_~ for better compatibility
+  const urlSafe = base64
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=/g, "~");
+
+  return `s=${urlSafe}`;
 }
 
 /**
  * Deserialize URL query string back to ProjectionData
- * Returns null if query string is invalid or empty
+ * Supports both new base64 format (s=...) and legacy format for backwards compatibility
  */
 export function decodeQueryToState(
   query: string,
@@ -55,6 +59,54 @@ export function decodeQueryToState(
   try {
     const params = new URLSearchParams(query);
 
+    // Check for new base64 format
+    const base64State = params.get("s");
+    if (base64State) {
+      // Decode URL-safe base64
+      const base64 = base64State
+        .replace(/-/g, "+")
+        .replace(/_/g, "/")
+        .replace(/~/g, "=");
+      const json = atob(base64);
+      const compact = JSON.parse(json) as number[];
+
+      // Reconstruct ProjectionData from compact array
+      return {
+        property: {
+          price: compact[0] ?? defaults.property.price,
+          closingCosts: compact[1] ?? defaults.property.closingCosts,
+          growth: compact[2] ?? defaults.property.growth,
+          maintenance: compact[3] ?? defaults.property.maintenance,
+          taxes: compact[4] ?? defaults.property.taxes,
+        },
+        mortgage: {
+          amount: compact[5] ?? defaults.mortgage.amount,
+          term: compact[6] ?? defaults.mortgage.term,
+          type: (compact[7] === 0 ? "fixed" : "variable") as
+            | "fixed"
+            | "variable",
+          fixedRate: compact[8] ?? defaults.mortgage.fixedRate,
+          varCurrent: compact[9] ?? defaults.mortgage.varCurrent,
+          varExpected: compact[10] ?? defaults.mortgage.varExpected,
+        },
+        investing: {
+          return: compact[11] ?? defaults.investing.return,
+          inflation: compact[12] ?? defaults.investing.inflation,
+          investUpfront: (compact[13] ?? 0) === 1,
+        },
+        profile: {
+          netIncome: compact[14] ?? defaults.profile.netIncome,
+          age: compact[15] ?? defaults.profile.age,
+          otherDebtsMonthly: compact[16] ?? defaults.profile.otherDebtsMonthly,
+        },
+        pledge: {
+          amount: compact[17] ?? defaults.pledge.amount,
+          ltv: compact[18] ?? defaults.pledge.ltv,
+        },
+      };
+    }
+
+    // Legacy format support (backwards compatibility)
     const state: ProjectionData = {
       property: {
         price: parseFloat(params.get("pp") ?? String(defaults.property.price)),

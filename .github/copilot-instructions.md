@@ -2,16 +2,17 @@
 
 ## Project Overview
 
-Next.js 16 app comparing home financing options (cash, mortgage, mixed, pledge) using financial projections. Single-page app with sidebar inputs + main dashboard showing 30-year projections.
+A web app that helps compare buying a home with cash vs mortgage vs mixed vs pledging investments, using simple inputs and showing clear outcomes over years.
 
 ## Architecture
 
 ### Core Structure
 
 - **Monorepo**: Root has `justfile` for commands, app lives in `web/`
-- **State Management**: Single `ProjectionData` state object in [page.tsx](web/src/app/[locale]/page.tsx), lifted up and passed to Sidebar (inputs) + MainContent (visualizations)
+- **State Management**: Single state object in [PageContent.tsx](web/src/app/[locale]/PageContent.tsx), lifted up and passed to Sidebar (inputs) + MainContent (visualizations)
 - **Financial Engine**: [math.ts](web/src/lib/math.ts) (PMT calculations with Decimal.js) → [projection.ts](web/src/lib/projection.ts) (30-year amortization) → UI rendering
 - **i18n**: `next-intl` with route-based locales `[locale]/`, messages in [src/messages/](web/src/messages/)
+- **API**: Placed at [web/src/app/api](web/src/app/api).
 
 ### Data Flow
 
