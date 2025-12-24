@@ -25,3 +25,8 @@ jobs:
         run: cd web && npm ci
       - name: Build
         run: cd web && npm run build
+      - name: "notify vercel"
+        continue-on-error: true
+        uses: "vercel/repository-dispatch/actions/status@v1"
+        with:
+          name: "Vercel - home-purchase-simulator: build"
