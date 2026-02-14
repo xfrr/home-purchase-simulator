@@ -23,6 +23,10 @@ jobs:
           cache-dependency-path: web/package-lock.json
       - name: Install dependencies
         run: cd web && npm ci
+      - name: Lint
+        run: cd web && npm run lint
+      - name: Test
+        run: cd web && npm test -- --watchAll=false
       - name: Build
         run: cd web && npm run build
       - name: "notify vercel"
