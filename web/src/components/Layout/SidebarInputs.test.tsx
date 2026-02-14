@@ -172,7 +172,7 @@ describe("SidebarInputs Components", () => {
       render(<InputGroup label="Price" value="50000" onChange={jest.fn()} />);
 
       const input = screen.getByRole("spinbutton") as HTMLInputElement;
-      expect(input.value).toBe("500000");
+      expect(input.value).toBe("50000");
     });
   });
 
