@@ -11,7 +11,7 @@ type Placement = "top" | "right" | "bottom" | "left";
 
 type TooltipProps = {
   /** The element that triggers the tooltip */
-  children: React.ReactElement<any>;
+  children: React.ReactElement<React.HTMLAttributes<HTMLElement>>;
   /** Tooltip content */
   content: React.ReactNode;
   /** Preferred placement (it can auto-flip if it would overflow) */
@@ -163,7 +163,7 @@ export function Tooltip({
 
     return () => {
       window.removeEventListener("resize", onReflow);
-      window.removeEventListener("scroll", onReflow, true as any);
+      window.removeEventListener("scroll", onReflow, { capture: true });
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, placement]);
@@ -194,9 +194,9 @@ export function Tooltip({
   }, [finalPlacement]);
 
   // Enhance child with aria (avoid injecting `ref` via cloneElement since not all elements accept it)
-  const child = React.Children.only(children) as React.ReactElement<any>;
+  const child = React.Children.only(children) as React.ReactElement<React.HTMLAttributes<HTMLElement>>;
 
-  const existingDescribedBy = (child.props as any)?.["aria-describedby"] as
+  const existingDescribedBy = (child.props as React.HTMLAttributes<HTMLElement>)?.["aria-describedby"] as
     | string
     | undefined;
 

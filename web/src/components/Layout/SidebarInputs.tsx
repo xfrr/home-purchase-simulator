@@ -123,6 +123,8 @@ export const Toggle: React.FC<ToggleProps> = ({ label, enabled, onChange }) => (
   <div className="flex items-center justify-between py-2">
     <span className="text-sm text-slate-600 font-medium">{label}</span>
     <button
+      role="checkbox"
+      aria-checked={enabled}
       onClick={() => onChange(!enabled)}
       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
         enabled ? "bg-indigo-600" : "bg-slate-200"

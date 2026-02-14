@@ -12,7 +12,6 @@ import {
   Settings,
   TrendingUp,
   User,
-  X,
 } from "lucide-react";
 import { useTranslations } from "next-intl"; // <--- Import hook
 import { useState } from "react";
@@ -23,7 +22,7 @@ interface SidebarProps {
   onPropertyChange: (
     category: keyof ProjectionData,
     field: string,
-    value: number | string | boolean
+    value: number | string | boolean,
   ) => void;
   onClose?: () => void;
 }
@@ -54,7 +53,7 @@ export default function Sidebar({
     category: keyof ProjectionData,
     field: string,
     value: string | boolean,
-    type: "number" | "string" | "boolean" = "number"
+    type: "number" | "string" | "boolean" = "number",
   ) => {
     let finalValue: number | string | boolean = value;
 
